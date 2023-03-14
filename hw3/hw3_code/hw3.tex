@@ -214,6 +214,14 @@ and zero otherwise, and $y_i$ is a real number in RN and SVMR, whereas it takes 
 The different regularizations lie in the different norms $\Vert f \Vert^2_{K}$ 
 in a Reproducing Kernel Hilbert Space $H$.
 
+It can be proved that every Reproducing Kernel Hilbert Space $H$ 
+there corresponds to a unique positive definite function $K(x, y)$, 
+called the reproducing kernel of $H$ that has the following property:
+\begin{equation}
+  f(\boldsymbol{x}) = <f(\boldsymbol{y}, K(\boldsymbol{x}, \boldsymbol{y}))>_H \quad 
+  \forall f \in H
+\end{equation} 
+
 
 \end{homeworkProblem}
 
