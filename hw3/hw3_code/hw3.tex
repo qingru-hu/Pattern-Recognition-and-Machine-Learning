@@ -117,8 +117,14 @@ For a concrete class $y=1$, plot curves of the three loss functions in Fig.\ref{
   \label{loss_func}
 \end{figure}
 
-How does that affect these methods’ behavior and make them different?
+In LDA, every sample in the dataset contributes to the loss function if it is wrongly classified, so 
+LDA is somewhat prone to outliers.
 
+In Logistic Regression, we punish those totally misclassified points severely, but don't pay much attention to those 
+data that are most difficult to classify, so it is robust to outliers but may misclassify those ambiguous ones.
+
+In SVM, only those points that are most difficult to discriminate (near the hyperplane) contibute to the total loss function, 
+so it may be able to classify those samples near the hyperplane well and is prone to outliers.
 
 
 \begin{homeworkProblem}
@@ -172,6 +178,42 @@ Notice that $y_i = \pm 1$, so $\boldsymbol{w}^{\top}x_i + b = y_i$.
 \begin{homeworkProblem}
   Search the paper and conduct a literature review for how to add different regularizations to SVM, 
   and more sophisticated forms of kernel function.
+
+\Answer
+Classical
+regularization theory formulates the regression and classification problem as
+a variational problem of finding the function f that minimizes the functional:
+\begin{equation}
+  \mathop{\text{min}}\limits_{f \in H} H[f] = \frac{1}{l}\sum_{i=1}^{l} V(y_i, f(\boldsymbol{x}_i))
+   + \lambda \Vert f \Vert^2_{K}
+\end{equation}
+where $\Vert f \Vert^2_{K}$ is a norm in a Reproducing Kernel Hilbert Space $H$ 
+defined by the positive definite function $K$, $l$ is the number of data points 
+, $\lambda$ is the regularization parameter and $V(\cdot)$ is the loss function. Under rather general conditions 
+the solution of the above equation is:
+\begin{equation}
+  f(\boldsymbol{x}) = \sum_{i=1}^{l} c_iK(\boldsymbol{x}, \boldsymbol{x}_i) + b
+\end{equation}
+For a classical ($L_2$) Regularization Networks (RN), the loss function is:
+\begin{equation}
+  V(y_i, f(\boldsymbol{x}_i)) = (y_i - f(\boldsymbol{x}_i))^2
+\end{equation}
+For Support Vector Machine Regression (SVMR), the loss function is:
+\begin{equation}
+  V(y_i, f(\boldsymbol{x}_i)) = \vert y_i - f(\boldsymbol{x}_i) \vert_{\epsilon}
+\end{equation}
+For Support Vector Machine Classification (SVMC), the loss function is:
+\begin{equation}
+  V(y_i, f(\boldsymbol{x}_i)) = \vert 1 - y_i f(\boldsymbol{x}_i) \vert_{+}
+\end{equation}
+where $|\cdot |_{\epsilon}$ is Vapnik's epsilon-insensitive norm, 
+$|x|_+ = x$ if x is positive
+and zero otherwise, and $y_i$ is a real number in RN and SVMR, whereas it takes values
+-1, 1 in SVMC.
+
+The different regularizations lie in the different norms $\Vert f \Vert^2_{K}$ 
+in a Reproducing Kernel Hilbert Space $H$.
+
 
 \end{homeworkProblem}
 
