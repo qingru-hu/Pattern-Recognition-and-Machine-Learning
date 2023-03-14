@@ -179,8 +179,9 @@ Notice that $y_i = \pm 1$, so $\boldsymbol{w}^{\top}x_i + b = y_i$.
   Search the paper and conduct a literature review for how to add different regularizations to SVM, 
   and more sophisticated forms of kernel function.
 
-\Answer
-Classical
+\Answer 
+Classical \footnote{My answer refers to this comprehensive review paper: 
+Evgeniou, T., Pontil, M. \& Poggio, T. Regularization Networks and Support Vector Machines. Advances in Computational Mathematics 13, 1-50 (2000). https://doi.org/10.1023/A:1018946025316}
 regularization theory formulates the regression and classification problem as
 a variational problem of finding the function f that minimizes the functional:
 \begin{equation}
@@ -220,15 +221,48 @@ called the reproducing kernel of $H$ that has the following property:
 \begin{equation}
   f(\boldsymbol{x}) = <f(\boldsymbol{y}, K(\boldsymbol{x}, \boldsymbol{y}))>_H \quad 
   \forall f \in H
-\end{equation} 
+\end{equation}
+the norm is defined by:
+\begin{equation}
+  \Vert f \Vert^2_{K} = f K f^{\top}
+\end{equation}
+
+Some common and sophisticated forms of kernel function are listed in 
+Tab.\ref{kernels}. The first four are radial kernels. The multiquadric and thin
+plate splines are positive semidefinite and thus require an extension of the simple RKHS. 
+The last two kernels are one-dimensional: multidimensional kernels can be built by
+tensor products of one-dimensional ones. The functions Bn are piecewise polynomials of
+degree n.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Kernel function & Regularization Network \\
+    \hline
+    $K(\boldsymbol{x} - \boldsymbol{y}) = exp(-\Vert \boldsymbol{x} - \boldsymbol{y} \Vert^2)$ & Gaussian RBF \\
+    $K(\boldsymbol{x} - \boldsymbol{y}) = (\Vert \boldsymbol{x} - \boldsymbol{y} \Vert^2 + c^2)^{-1/2}$ & Inverse multiquadric \\
+    $K(\boldsymbol{x} - \boldsymbol{y}) = (\Vert \boldsymbol{x} - \boldsymbol{y} \Vert^2 + c^2)^{1/2}$ & Multiquadric \\
+    $K(\boldsymbol{x} - \boldsymbol{y}) = \Vert \boldsymbol{x} - \boldsymbol{y} \Vert^{2n+1}$ & Thin plate splines \\
+    $K(\boldsymbol{x} - \boldsymbol{y}) = (1 + \boldsymbol{x}\cdot \boldsymbol{y})^d$ & Polynomial of degree $d$ \\
+    $K(x, y) = B_{2n+1}(x-y)$ & B-splines\\
+    $K(x, y) = \frac{\sin(d+1/2)(x-y)}{\sin((x-y))/2}$ & Trigonometric polynomial of degree $d$\\
+    \hline
+  \end{tabular}
+  \label{kernels}
+\end{table}
 
 
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
-\section*{(a) Use SVM to classify the train set and predict on the test set}
-Use Linear SVM to classify the samples on the training set, and 
-the accuracy on the test set is $97\%$.
+\section*{(a) Use the SVC classifier in sklearn to classify the train set and predict on the test set}
+Use Linear SVC to classify the samples on the training set, and 
+the accuracy on the test set is $97\%$. 
+Besides, I also try to write my own SVM by solving the dual problem using the quadratic program solver, 
+but I didn't get proper results and I haven't found where my probems are. My own try to 
+build a SVM is in the `My own SVM' section of the jupyter-notebook `face\_svm.ipynb'. Any help will 
+be graetly appreciated if you help me find my problems.
 
 \section*{(b) Different kernel functions and penalty strength $C$}
 \begin{table}[htbp]
@@ -268,7 +302,10 @@ The best composition is the RBF kernel with a penalty strength
 of 1 or 10, which both have an accuracy of 97\%.
 
 \section*{(c)  The supporting vectors}
-
+Use the sklearn.SVC `support\_' attribute to find the indexes for the support vectors in the training set and plot 
+them in the second `Sklearn SVM' section of the jupyter-notebook `face\_svm.ipynb'. These images are selected as 
+support vectors maybe because they are difficult to classfy. Some of them are not images of the front of the face and
+some of them may have low contrast.
 
 \end{homeworkProblem}
 

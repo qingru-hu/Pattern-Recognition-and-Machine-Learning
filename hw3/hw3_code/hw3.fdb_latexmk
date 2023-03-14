@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1678789351 "d:/github/Pattern-Recognition-and-Machine-Learning/hw3/hw3_code/hw3.tex" "hw3.pdf" "hw3" 1678789352
+["pdflatex"] 1678806991 "d:/github/Pattern-Recognition-and-Machine-Learning/hw3/hw3_code/hw3.tex" "hw3.pdf" "hw3" 1678806992
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1667557178 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1667556211 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1667552699 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -42,7 +42,9 @@
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb" 1667552699 36912 b448ef9ad9d7228ec3c6e71005136d55 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1667552699 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1667552699 31809 8670ca339bf94e56da1fc21c80635e2a ""
+  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1667552699 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1667552699 32762 7fee39e011c23b3589931effd97b9702 ""
+  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1667552699 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1667552699 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1667552699 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1667552699 32716 08e384dc442464e7285e891af9f45947 ""
@@ -87,9 +89,9 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1667566807 4648419 cd736d89bc726120ec8d74e8e9beb636 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1667566959 3063425 688314ca18d1aea333cd9cbeacf519df ""
   "c:/texlive/2022/texmf.cnf" 1667566789 713 e69b156964470283e0530f5060668171 ""
-  "d:/github/Pattern-Recognition-and-Machine-Learning/hw3/hw3_code/hw3.tex" 1678789350 10894 7b1b520454a2d1cc42392754b5a7d875 ""
-  "hw3.aux" 1678789352 454 b9e635e0b9fa74e6dc4d434d5b1864ee "pdflatex"
-  "hw3.tex" 1678789350 10894 7b1b520454a2d1cc42392754b5a7d875 ""
+  "d:/github/Pattern-Recognition-and-Machine-Learning/hw3/hw3_code/hw3.tex" 1678806990 13733 729bcb4a39810d3104f136e250110a98 ""
+  "hw3.aux" 1678806992 480 93363ec8488780960255c535c17c3c98 "pdflatex"
+  "hw3.tex" 1678806990 13733 729bcb4a39810d3104f136e250110a98 ""
   "loss_func.png" 1678784496 43236 dc1c3fcce23b358537f92b4d2f717043 ""
   (generated)
   "hw3.aux"
