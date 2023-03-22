@@ -109,6 +109,30 @@ Therefore:
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+\section*{(1)} See the decision\_tree.ipynb.
+\section*{(2)}
+\textbf{make\_split(variable, value, data, is\_numeric)}\\
+\textbf{Input:}\\
+\textbf{variable}, which is a str, the feature used to split the node;\\
+\textbf{value}, which is either a number or str, the decision value for split, can be a quantitative value or a categorical feature;\\
+\textbf{data}, which is a pandas dataframe, the subdataset at the split node. 
+Each item of data represents whether the person is obese (1) or not (0).\\
+\textbf{is\_numeric}, which is a bool, whether the split feature is numeric or categorical.\\
+\textbf{Return:}\\
+\textbf{data\_1}, which is a pandas dataframe, one child node dataset after split;\\
+\textbf{data\_2}, which is a pandas dataframe, the other child node dataset after split.\\
+
+
+\noindent\textbf{get\_best\_split(y, data)}\\
+\textbf{Input:}\\
+\textbf{y}, which is a str, the label, that is `obese' in this data; \\
+\textbf{data}, which is a pandas datafram, the dataset at the node, constaining the features and labels;\\
+\textbf{Return:}\\
+\textbf{split\_variable}, which is a str, the feature that has the maximum IG at this node;\\
+\textbf{split\_value}, the decision value for the split feature;\\
+\textbf{split\_ig}, the value of the maximum IG;\\
+\textbf{split\_numeric}, which is a bool, whether the split feature is numeric or categorical.
+
 
 \end{homeworkProblem}
 
