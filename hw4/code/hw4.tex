@@ -111,29 +111,40 @@ Therefore:
 \begin{homeworkProblem}
 \section*{(1)} See the decision\_tree.ipynb.
 \section*{(2)}
-\textbf{make\_split(variable, value, data, is\_numeric)}\\
+\texttt{make\_split(variable, value, data, is\_numeric)}\\
 \textbf{Input:}\\
-\textbf{variable}, which is a str, the feature used to split the node;\\
-\textbf{value}, which is either a number or str, the decision value for split, can be a quantitative value or a categorical feature;\\
-\textbf{data}, which is a pandas dataframe, the subdataset at the split node. 
+\texttt{variable}, which is a str, the feature used to split the node;\\
+\texttt{value}, which is either a number or str, the decision value for split, can be a quantitative value or a categorical feature;\\
+\texttt{data}, which is a pandas dataframe, the subdataset at the split node. 
 Each item of data represents whether the person is obese (1) or not (0).\\
-\textbf{is\_numeric}, which is a bool, whether the split feature is numeric or categorical.\\
+\texttt{is\_numeric}, which is a bool, whether the split feature is numeric or categorical.\\
 \textbf{Return:}\\
-\textbf{data\_1}, which is a pandas dataframe, one child node dataset after split;\\
-\textbf{data\_2}, which is a pandas dataframe, the other child node dataset after split.\\
+\texttt{data\_1}, which is a pandas dataframe, one child node dataset after split;\\
+\texttt{data\_2}, which is a pandas dataframe, the other child node dataset after split.\\
 
 
-\noindent\textbf{get\_best\_split(y, data)}\\
+\noindent\texttt{get\_best\_split(y, data)}\\
 \textbf{Input:}\\
-\textbf{y}, which is a str, the label, that is `obese' in this data; \\
-\textbf{data}, which is a pandas datafram, the dataset at the node, constaining the features and labels;\\
+\texttt{y}, which is a str, the label, that is `obese' in this data; \\
+\texttt{data}, which is a pandas datafram, the dataset at the node, constaining the features and labels;\\
 \textbf{Return:}\\
-\textbf{split\_variable}, which is a str, the feature that has the maximum IG at this node;\\
-\textbf{split\_value}, the decision value for the split feature;\\
-\textbf{split\_ig}, the value of the maximum IG;\\
-\textbf{split\_numeric}, which is a bool, whether the split feature is numeric or categorical.
+\texttt{split\_variable}, which is a str, the feature that has the maximum IG at this node;\\
+\texttt{split\_value}, the decision value for the split feature;\\
+\texttt{split\_ig}, the value of the maximum IG;\\
+\texttt{split\_numeric}, which is a bool, whether the split feature is numeric or categorical.
+
+\section*{(3)}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=10cm]{accu.png}
+  \caption{The validation accuracy}
+\end{figure}
+The validation accuracy increases with the max depth of the decision from 1 to 8, 
+but after 8 the validation accuracy remains the same when the max depth equals 8 and 16.
+Since the validation doesn't decrease, overfitting does not occurred. 
 
 
+The two other hyperparameters \texttt{min\_samples\_split} and \texttt{min\_information\_gain} have succesfully prevented the overfitting.
 \end{homeworkProblem}
 
 
