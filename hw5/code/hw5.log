@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.10.18)  26 MAR 2023 18:35
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.10.18)  27 MAR 2023 10:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -231,16 +231,22 @@ File: db.png Graphic file (type bmp)
 <db.png>
  [1
 
-] 
+]
+File: p_win.png Graphic file (type bmp)
+<p_win.png>
+ [2]
+File: all.png Graphic file (type bmp)
+<all.png>
+ 
 AED: lastpage setting LastPage
-[2] (./hw5.aux) ) 
+[3] [4] (./hw5.aux) ) 
 Here is how much of TeX's memory you used:
- 3045 strings out of 479418
- 41216 string characters out of 5888104
+ 3059 strings out of 479418
+ 41348 string characters out of 5888104
  293932 words of memory out of 5000000
- 20515 multiletter control sequences out of 15000+600000
+ 20527 multiletter control sequences out of 15000+600000
  539059 words of font info for 59 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 30i,11n,45p,216b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,11n,45p,216b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on hw5.pdf (2 pages).
+Output written on hw5.pdf (4 pages).
