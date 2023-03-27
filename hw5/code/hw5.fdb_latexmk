@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1679929260 "d:/github/Pattern-Recognition-and-Machine-Learning/hw5/code/hw5.tex" "hw5.pdf" "hw5" 1679929261
+["pdflatex"] 1679930037 "d:/github/Pattern-Recognition-and-Machine-Learning/hw5/code/hw5.tex" "hw5.pdf" "hw5" 1679930039
   "all.png" 1679929097 690302 e0cc4d4815027f7c86b86a33937663e8 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1667557178 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1667556211 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -76,10 +76,10 @@
   "c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1667566807 4648419 cd736d89bc726120ec8d74e8e9beb636 ""
   "c:/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1667566959 3063425 688314ca18d1aea333cd9cbeacf519df ""
   "c:/texlive/2022/texmf.cnf" 1667566789 713 e69b156964470283e0530f5060668171 ""
-  "d:/github/Pattern-Recognition-and-Machine-Learning/hw5/code/hw5.tex" 1679924330 8220 9bb45ce3e7eef4450235924343c56246 ""
+  "d:/github/Pattern-Recognition-and-Machine-Learning/hw5/code/hw5.tex" 1679930036 8296 5a6657b081b50326cacab5b2f97ad3e1 ""
   "db.png" 1679926088 27099 ba2b07eeb981e6d054f290d2aa9993cf ""
-  "hw5.aux" 1679929261 660 0a9606bff1002c6a12a03a336ba779f5 "pdflatex"
-  "hw5.tex" 1679924330 8220 9bb45ce3e7eef4450235924343c56246 ""
+  "hw5.aux" 1679930038 660 0a9606bff1002c6a12a03a336ba779f5 "pdflatex"
+  "hw5.tex" 1679930036 8296 5a6657b081b50326cacab5b2f97ad3e1 ""
   "p_win.png" 1679923984 77885 fe52825f3447e5a5a10b62dd43027dbf ""
   (generated)
   "hw5.aux"
