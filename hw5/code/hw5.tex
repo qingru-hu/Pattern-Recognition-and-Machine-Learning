@@ -173,7 +173,7 @@ function in $\mathcal{H}$. Therefore, the VC dimension of $\mathcal{H}$ is 3.
 
 \begin{homeworkProblem}
 \section*{(1)}
-I use Parzen window of width $h=2$ to estimate the density function of P(x, y). The the density function 
+I use Parzen window of width $h=1$ to estimate the density function of P(x, y). The the density function 
 is shown in Fig.\ref{p_win}.
 \begin{figure}[htbp]
   \centering
@@ -185,7 +185,7 @@ is shown in Fig.\ref{p_win}.
 \section*{(2)}
 Change the window width in $[0.3, 0.5, 1]$ and kernel function in [`Parzen', `Gaussian', `Exp'], 
 plot the heatmap, and calculate the mean density error. All the relative information are labelled in figures.
-According the mean density error, the kernel function `Gaussian' with window width of $0.5$ is the best composition.
+According the mean density error, the kernel function `Parzen' with window width of $1$ is the best composition.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=16cm]{all.png}
