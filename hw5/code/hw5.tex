@@ -118,9 +118,10 @@ Let $P(\omega_1 \vert (x, y)) = P(\omega_2 \vert (x, y))$ and we can get the dec
 \begin{align*}
   \int_x \lambda_2 P(\omega_2, x) \d x &\leq \int_x \lambda_1 P(\omega_1, x) \d x \\
   \lambda_2 P(\omega_2, x) &\leq \lambda_1 P(\omega_1, x) \\
-  \frac{P(\omega_1, x)}{P(\omega_2, x)} &\geq \frac{\lambda_2}{\lambda_1}
+  \frac{P(\omega_1, x)}{P(\omega_2, x)} &\geq \frac{\lambda_2}{\lambda_1} \\
+  \frac{P(\omega_1\vert x)}{P(\omega_2 \vert x)} &\geq \frac{\lambda_2}{\lambda_1}
 \end{align*}
-Vice versa, if $\frac{P(\omega_1, x)}{P(\omega_2, x)} \geq \frac{\lambda_2}{\lambda_1}$, then:
+Vice versa, if $\frac{P(\omega_1 \vert x)}{P(\omega_2 \vert x)} \geq \frac{\lambda_2}{\lambda_1}$, then:
 \begin{align*}
   \frac{P(\omega_1, x)}{P(\omega_2, x)} &\geq \frac{\lambda_2}{\lambda_1} \\
   \int_x \lambda_2 P(\omega_2, x) \d x &\leq \int_x \lambda_1 P(\omega_1, x) \d x 
