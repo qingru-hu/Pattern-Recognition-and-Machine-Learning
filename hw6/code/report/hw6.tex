@@ -129,7 +129,7 @@ in , Fig.2 and Fig.3.
     \hline
     Dice Type & Dice 1 & Dice 2 \\
     \hline 
-    Initial Prob & 0.548 & 0.452 \\
+    Initial Prob & 0.618 & 0.382 \\
     \hline
   \end{tabular}
   \caption{The initial probabilities}
@@ -141,9 +141,9 @@ in , Fig.2 and Fig.3.
     \hline
     Dice Type & Dice 1 & Dice 2 \\
     \hline 
-    Dice 1 & 0.618 & 0.382 \\
+    Dice 1 & 0.888 & 0.112 \\
     \hline
-    Dice 2 & 0.897 & 0.103 \\
+    Dice 2 & 0.156 & 0.844 \\
     \hline
   \end{tabular}
   \caption{The transition probabilities}
@@ -155,16 +155,33 @@ in , Fig.2 and Fig.3.
     \hline
     Dice/Point & 1 & 2 & 3& 4 & 5 & 6 \\
     \hline 
-    Dice 1 & 0.119 & 0.180 & 0.165 & 0.162 & 0.152 & 0.223 \\
+    Dice 1 & 0.158 & 0.164 & 0.184 & 0.171 & 0.191 & 0.132 \\
     \hline
-    Dice 2 & 0.195 & 0.037 & 0.109 & 0.107 & 0.141 & 0.411 \\
+    Dice 2 & 0.120 & 0.098 & 0.096 & 0.108 & 0.088 & 0.491 \\
     \hline
   \end{tabular}
   \caption{The emission probabilities}
 \end{table}
 
+The code is shown as below.
+\begin{lstlisting}
+import numpy as np
+from hmmlearn import hmm
+
+data = np.load('sequences.npy')
+X = data.reshape(200*30, 1)
+lens = np.ones(data.shape[0])*30
+lens = lens.astype(int)
+model = hmm.CategoricalHMM(n_components=2, random_state=10)
+model.fit(X, lens)
+model.score(X)
+# -10434.902086730863
+\end{lstlisting}
+
 \section*{(2)}
 \subsection*{Forward Algorithm}
+The probability of observing sequence 6 6
+6 6 using forward algorithm is $p = 0.015$.
 \begin{lstlisting}
   iprob = model.startprob_
   tprob = model.transmat_
@@ -178,8 +195,39 @@ in , Fig.2 and Fig.3.
           a0 = eprob[0, 6]*(a0*tprob[0, 0] + a1*tprob[1, 0])
           a1 = eprob[1, 6]*(a0*tprob[0, 1] + a1*tprob[1, 1])
   p = a0 + a1
-  # p = 0.002354746869856092
+  # p = 0.014626307201743518
   \end{lstlisting}
+
+\subsection*{Backward Algorithm}
+The probability of observing sequence 6 6
+6 6 using backward algorithm is $p = 0.015$.
+\begin{lstlisting}
+  iprob = model.startprob_
+tprob = model.transmat_
+eprob = model.emissionprob_
+
+for t in [3, 2, 1, 0]:
+    # as = np.zeros([2, 2])
+    if t==3:
+        b0 = 1
+        b1 = 1
+    else:
+        b0 = tprob[0, 0]*eprob[0, 6]*b0 + tprob[0, 1]*eprob[1, 6]*b1
+        b1 = tprob[1, 0]*eprob[0, 6]*b0 + tprob[1, 1]*eprob[1, 6]*b1
+p = a0 + a1
+# p = 0.014626307201743518
+\end{lstlisting}
+
+\section*{(3)}
+This player is cheating and he switched his dice on his 12th roll.
+
+\begin{lstlisting}
+seq = np.array([3, 2, 1, 3, 4, 5, 6, 3, 1, 4, 1, 6, 6, 2, 6])
+seq = seq.reshape(1, -1)
+model.decode(seq)
+# log_prob = -28.45720629383466,
+# state_sequence = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]
+\end{lstlisting}
 
 \end{homeworkProblem}
 
@@ -190,13 +238,10 @@ in , Fig.2 and Fig.3.
 
 \section*{2.3}
 
-\end{homeworkProblem}
-
-\begin{homeworkProblem}
-\section*{3.1}
-
+\section*{2.4}
 
 \end{homeworkProblem}
+
 
 % \newpage
 % \Acknowledgement{Thank Siying Yang 2020012981 for
