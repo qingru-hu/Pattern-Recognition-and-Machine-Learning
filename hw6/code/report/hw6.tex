@@ -11,7 +11,7 @@
 \usepackage{enumitem}
 \usepackage{array} 
 \usepackage{hyperref}
-
+\usepackage{float}
 \usepackage{fontspec}
 \setmonofont{Consolas}
 \usepackage{listings}
@@ -232,22 +232,184 @@ model.decode(seq)
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+In this problem, the datasets `iris', `breast\_cancer' and `usps' 
+are represented as I, B and U. I select hyperparameter configuration that has the largest average
+validation accuracy as the optimal for each model.
 \section*{2.1}
+\begin{lstlisting}
+  models = {
+    "Decision Tree": DecisionTreeClassifier,  # criterion, max_depth
+    "Random Forest": RandomForestClassifier, # criterion, n_estimators
+    "Bagging": BaggingClassifier, # n_estimators
+    "Gradient Boosting": GradientBoostingClassifier, 
+    # n_estimators, learning_rate
+    # "XGBoost":
+    "Naive Bayes": GaussianNB, # var_smoothing
+    "Perceptron": Perceptron, # penalty, alpha
+    "Logistic Regression": LogisticRegression, # penalty, C
+    "LDA": LinearDiscriminantAnalysis,
+    "SVM": SVC, # kernel, C
+}
+\end{lstlisting}
 
 \section*{2.2}
+\begin{lstlisting}
+  model_hparams_best = {
+    "Decision Tree": dict(criterion='gini', max_depth=5),
+    "Random Forest": dict(n_estimators=50, criterion='entropy'),
+    "Bagging": dict(n_estimators=20),
+    "Gradient Boosting": dict(learning_rate=0.1, n_estimators=100),
+    # "XGBoost":
+    "Naive Bayes":dict(var_smoothing=1e-9),
+    "Perceptron":dict(alpha=0.001, penalty='l1'),
+    "Logistic Regression": dict(C=1, penalty='l2'),
+    "LDA":dict(),
+    "SVM":dict(kernel='rbf', C=1)
+}
+\end{lstlisting}
 
 \section*{2.3}
 \subsection*{Decision Tree}
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{|c|ccc|ccc|ccc|}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
   \hline
-  criterion  & \multicolumn{3}{c|}{Q\_G}                                       & \multicolumn{3}{c|}{Q\_L}                                       & \multicolumn{3}{c|}{Q\_L} \\ \hline
-  max\_depth & \multicolumn{1}{c|}{I}    & \multicolumn{1}{c|}{B}     & U      & \multicolumn{1}{c|}{I}    & \multicolumn{1}{c|}{B}     & U      & \multicolumn{1}{c|}{I}    & \multicolumn{1}{c|}{B}     & U \\ \hline
-  \end{tabular}
-  \end{table}
+  criterion  & entropy & entropy & entropy & gini & gini & gini & log\_loss & log\_loss & log\_loss \\ \hline
+  max\_depth & I    & B     & U      & I    & B     & U      & I    & B    & U \\ \hline
+  3 & 0.933 & 0.895 & 0.923 & 0.933 & 0.895 & 0.944 & 0.933 & 0.912 & 0.937 \\ \hline
+  5 & 0.933 & 0.912 & 0.909 & 0.933 & 0.947 & 0.923 & 0.933 & 0.912 & 0.93 \\ \hline
+  10 & 0.933 & 0.912 & 0.923 & 0.933 & 0.912 & 0.937 & 0.933 & 0.912 & 0.93 \\ \hline
+  12 & 0.933 & 0.895 & 0.944 & 0.933 & 0.912 & 0.937 & 0.933 & 0.912 & 0.937 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{criterion='gini'} and \texttt{max\_depth=5}.
+
+\subsection*{Random Forest}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  criterion  & entropy & entropy & entropy & gini & gini & gini & log\_loss & log\_loss & log\_loss \\ \hline
+  n\_estimators & I    & B     & U      & I    & B     & U      & I    & B    & U \\ \hline
+  20 & 1.0 & 0.93 & 0.972 & 1.0 & 0.947 & 0.986 & 0.933 & 0.912 & 0.972 \\ \hline
+  50 & 1.0 & 0.877 & 0.965 & 1.0 & 0.877 & 0.979 & 0.933 & 0.877 & 0.979 \\ \hline
+  100 & 1.0 & 0.93 & 0.965 & 0.933 & 0.912 & 0.972 & 0.933 & 0.912 & 0.972 \\ \hline
+  200 & 1.0 & 0.947 & 0.986 & 0.933 & 0.912 & 0.972 & 0.933 & 0.912 & 0.979 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{criterion='entropy'} and \texttt{n\_estimators=50}.
+
+\subsection*{Bagging}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  n\_estimators/dataset & I    & B     & U \\ \hline
+  2 & 0.867 & 0.982 & 0.951 \\ \hline
+  5 & 0.867 & 1.0 & 0.944 \\ \hline
+  10 & 0.933 & 1.0 & 0.951 \\ \hline
+  20 & 0.933 & 0.982 & 0.986 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{n\_estimators=20}.
+
+\subsection*{Gradient Boosting}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  learning\_rate  & 1e-3 & 1e-3 & 1e-3 & 1e-2 & 1e-2 & 1e-2 & 1e-1 & 1e-1 & 1e-1 \\ \hline
+  n\_estimators & I    & B     & U      & I    & B     & U      & I    & B    & U \\ \hline
+  10 & 1.0 & 0.632 & 0.909 & 0.933 & 0.632 & 0.909 & 1.0 & 0.632 & 0.93 \\ \hline
+  20 & 0.933 & 0.632 & 0.93 & 0.933 & 0.632 & 0.909 & 0.933 & 0.965 & 0.909 \\ \hline
+  50 & 0.933 & 0.947 & 0.937 & 0.933 & 0.965 & 0.923 & 1.0 & 0.947 & 0.951 \\ \hline
+  100 & 0.933 & 0.632 & 0.909 & 1.0 & 0.632 & 0.93 & 1.0 & 0.632 & 0.93 \\ \hline
+  200 & 0.933 & 0.632 & 0.909 & 0.933 & 0.965 & 0.909 & 1.0 & 0.965 & 0.937 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{learning\_rate=0.1} and \texttt{n\_estimators=100}.
+
+\subsection*{Naive Bayes}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  var\_smoothing/dataset & I    & B     & U \\ \hline
+  1e-09 & 1.0 & 0.982 & 0.93 \\ \hline
+  1e-07 & 1.0 & 0.982 & 0.93 \\ \hline
+  0.001 & 1.0 & 0.982 & 0.93 \\ \hline
+  0.1 & 1.0 & 0.965 & 0.937 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{var\_smoothing=1e-9}.
+
+\subsection*{Perceptron}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  penalty  & 1e-3 & 1e-3 & 1e-3 & 1e-2 & 1e-2 & 1e-2 & 1e-1 & 1e-1 & 1e-1 \\ \hline
+  alpha & I    & B     & U      & I    & B     & U      & I    & B    & U \\ \hline
+  1e-05 & 0.867 & 0.965 & 0.993 & 0.867 & 0.965 & 0.993 & 0.867 & 0.965 & 0.993 \\ \hline
+  0.0001 & 0.867 & 0.947 & 0.993 & 0.867 & 0.912 & 0.986 & 0.867 & 0.982 & 0.986 \\ \hline
+  0.001 & 0.867 & 0.947 & 0.993 & 0.867 & 0.965 & 0.986 & 0.867 & 0.947 & 0.937 \\ \hline
+  0.01 & 0.867 & 0.965 & 0.993 & 0.867 & 0.965 & 0.993 & 0.867 & 0.965 & 0.993 \\ \hline
+  0.1 & 0.867 & 0.912 & 0.986 & 0.867 & 0.982 & 0.986 & 0.8 & 0.93 & 0.937 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{alpha=0.001} and \texttt{penalty='l1'}.
+
+\subsection*{Logistic Regression}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|}
+  \hline
+  penalty  & None & None & None & l2 & l2 & l2 \\ \hline
+  C & I    & B     & U      & I    & B     & U    \\ \hline
+  0.1 & 1.0 & 0.982 & 0.965 & 1.0 & 0.982 & 0.986 \\ \hline
+  1 & 0.867 & 0.982 & 0.986 & 1.0 & 0.982 & 0.965 \\ \hline
+  10 & 1.0 & 0.982 & 0.965 & 1.0 & 0.982 & 0.979 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{C=1} and \texttt{penalty='l2'}.
+
+\subsection*{LDA}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  dataset & I    & B     & U \\ \hline
+  validation accuracy & 1.0 & 0.930 & 0.993 \\ \hline
+\end{tabular}
+\end{table}
+The average of the validation accuracy over the three datasets is $0.978$.
+
+\subsection*{SVM}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  kernel  & linear & linear & linear & poly & poly & poly & rbf & rbf & rbf &sigmoid &sigmoid &sigmoid  \\ \hline
+  C & I    & B     & U      & I    & B     & U      & I    & B    & U& I    & B    & U \\ \hline
+  0.001 & 0.933 & 0.947 & 0.993 & 0.933 & 0.632 & 0.503 & 0.933 & 0.632 & 0.895 & 0.933 & 0.877 & 0.944 \\ \hline
+  0.01 & 0.533 & 0.684 & 0.503 & 0.933 & 0.965 & 0.993 & 0.933 & 0.842 & 0.965 & 0.933 & 0.965 & 0.979 \\ \hline
+  0.1 & 0.933 & 0.632 & 0.503 & 0.6 & 0.772 & 0.671 & 1.0 & 0.965 & 1.0 & 0.933 & 0.965 & 0.986 \\ \hline
+  1 & 0.933 & 0.632 & 0.503 & 0.933 & 0.632 & 0.895 & 0.933 & 0.877 & 0.944 & 1.0 & 0.982 & 0.986 \\ \hline
+  10 & 0.933 & 0.965 & 0.993 & 0.933 & 0.842 & 0.965 & 0.933 & 0.965 & 0.979 & 0.933 & 0.895 & 1.0 \\ \hline
+  100 & 0.6 & 0.772 & 0.671 & 1.0 & 0.965 & 1.0 & 0.933 & 0.965 & 0.986 & 1.0 & 0.982 & 1.0 \\ \hline
+  1000 & 0.933 & 0.632 & 0.895 & 0.933 & 0.877 & 0.944 & 1.0 & 0.982 & 0.986 & 0.933 & 0.965 & 0.951 \\ \hline
+\end{tabular}
+\end{table}
+The best configuration of hyperparameters is \texttt{kernel='rbf'} and \texttt{C=1}.
 
 \section*{2.4}
+The optimal hyperparameter configuration is shown in 2.2, and the accuracy on the test set for all datasets is shown in Fig.1.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=12cm]{test.png}
+  \caption{The accuracy on the test dataset for each model}
+\end{figure}
 
 \end{homeworkProblem}
 
