@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1681136155 "hw6.xdv" "hw6.pdf" "hw6" 1681136156
-  "hw6.xdv" 1681136155 137260 ad891cdb3b4786bf0f75ec89bb0fd3da "xelatex"
+["xdvipdfmx"] 1681136379 "hw6.xdv" "hw6.pdf" "hw6" 1681136380
+  "hw6.xdv" 1681136379 138312 0c17361374f35c544978a4bb02996147 "xelatex"
   (generated)
   "hw6.pdf"
-["xelatex"] 1681136154 "d:/github/Pattern-Recognition-and-Machine-Learning/hw6/code/report/hw6.tex" "hw6.xdv" "hw6" 1681136156
+["xelatex"] 1681136378 "d:/github/Pattern-Recognition-and-Machine-Learning/hw6/code/report/hw6.tex" "hw6.xdv" "hw6" 1681136380
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1667557178 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1667566728 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1667556211 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -103,10 +103,10 @@
   "c:/texlive/2022/texmf-dist/web2c/texmf.cnf" 1667552418 40171 cdab547de63d26590bebb3baff566530 ""
   "c:/texlive/2022/texmf-var/web2c/xetex/xelatex.fmt" 1667566889 5575393 bc29f7eb9d1e7cbdd17d35ad5a86afc6 ""
   "c:/texlive/2022/texmf.cnf" 1667566789 713 e69b156964470283e0530f5060668171 ""
-  "d:/github/Pattern-Recognition-and-Machine-Learning/hw6/code/report/hw6.tex" 1681136154 16019 052fc321bf40bac908804416343dce7a ""
-  "hw6.aux" 1681136155 1179 cc451358b989d636e9deff794dba0d0b "xelatex"
+  "d:/github/Pattern-Recognition-and-Machine-Learning/hw6/code/report/hw6.tex" 1681136377 16128 efbff3177f55c6c4f8c0ad766df7a1c4 ""
+  "hw6.aux" 1681136379 1179 cc451358b989d636e9deff794dba0d0b "xelatex"
   "hw6.out" 0 -1 0 "xelatex"
-  "hw6.tex" 1681136154 16019 052fc321bf40bac908804416343dce7a ""
+  "hw6.tex" 1681136377 16128 efbff3177f55c6c4f8c0ad766df7a1c4 ""
   "test.png" 1681136093 35272 60d307c02f5da9ab4977436999a7bb56 ""
   (generated)
   "hw6.aux"

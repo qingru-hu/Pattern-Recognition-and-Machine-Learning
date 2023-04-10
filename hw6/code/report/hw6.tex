@@ -360,6 +360,7 @@ The best configuration of hyperparameters is \texttt{var\_smoothing=1e-9}.
 The best configuration of hyperparameters is \texttt{alpha=0.001} and \texttt{penalty='l1'}.
 
 \subsection*{Logistic Regression}
+The model solver `lbfgs' can not handle `l1' penalty, so I just include `None' and `l2' in penalty options.
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|c|}
