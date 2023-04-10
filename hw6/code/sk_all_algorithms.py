@@ -3,9 +3,18 @@ from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import Perceptron
+from sklearn.linear_model import LogisticRegression
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.svm import SVC
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 # 加载数据集并进行train/val/test划分
 datasets = {
@@ -36,19 +45,19 @@ models = {
     ##################################################
     # TODO: 找到下面每个算法对应的sklearn模型
     ##################################################
-    # "Random Forest":
-    # "Bagging":
-    # "Gradient Boosting":
+    "Random Forest": RandomForestClassifier, # criterion, n_estimators
+    "Bagging": BaggingClassifier, # n_estimators
+    "Gradient Boosting": GradientBoostingClassifier, # n_estimators, learning_rate
     # "XGBoost":
-    # "Naive Bayes":
-    # "Perceptron":
-    # "Logistic Regression":
-    # "LDA":
-    # "SVM":
+    "Naive Bayes": GaussianNB, # var_smoothing
+    "Perceptron": Perceptron, # penalty, alpha
+    "Logistic Regression": LogisticRegression, # penalty, C
+    "LDA": LinearDiscriminantAnalysis,
+    "SVM": SVC, # kernel, C
 }
 
-model_hparams = {
-    "Decision Tree": dict(criterion='entropy', max_depth=5),
+model_hparams_best = {
+    "Decision Tree": dict(criterion='log_loss', max_depth=10),
     ##################################################
     # TODO: 为下面每个模型指定超参数
     ##################################################
@@ -67,6 +76,23 @@ def run_method(method_name):
     # 这个函数用于调试某一个特定方法的超参数，并在训练、验证集上测试准确率
     train_results, val_results = {}, {}
     hparams = model_hparams.get(method_name, dict())
+    print(hparams)
+    for name, X_train, X_val, y_train, y_val in zip(
+            datasets.keys(), X_train_sets.values(), X_val_sets.values(), y_train_sets.values(), y_val_sets.values()
+    ):
+        model_fn = models[method_name]
+        model = model_fn(**hparams)
+        model.fit(X_train, y_train)
+        train_score = model.score(X_train, y_train)
+        val_score = model.score(X_val, y_val)
+        train_results[name] = train_score
+        val_results[name] = val_score
+    return train_results, val_results, hparams
+
+def run_hparams(method_name, param):
+    # 这个函数用于调试某一个特定方法的超参数，并在训练、验证集上测试准确率
+    train_results, val_results = {}, {}
+    hparams = param #model_hparams.get(method_name, dict())
     for name, X_train, X_val, y_train, y_val in zip(
             datasets.keys(), X_train_sets.values(), X_val_sets.values(), y_train_sets.values(), y_val_sets.values()
     ):
@@ -90,7 +116,7 @@ def report_result(runs = 5):
         for model_name, model_fn in models.items():
             score = 0
             for _ in range(runs):
-                model = model_fn(**model_hparams.get(model_name, dict()))
+                model = model_fn(**model_hparams_best.get(model_name, dict()))
                 model.fit(X_train, y_train)
                 score += model.score(X_test, y_test)
             row[model_name] = score / runs
@@ -106,8 +132,40 @@ def report_result(runs = 5):
     plt.show()
 
 if __name__ == "__main__":
-    train_results, val_results, hparams = run_method('Decision Tree')
-    print(f'train accuracy on each dataset: {train_results}'
-          f'\nval accuracy on each dataset: {val_results}'
-          f'\nhparams: {hparams}')
-    report_result()
+    model = 'Decision Tree'
+    print(model)
+    model_hparams_type = ['criterion', 'max_depth']
+    param1 = ['log_loss', 'entropy', 'gini', ]
+    param2 = [3, 5, 10, 12]
+    model_hparams_values = []
+    for i in param1:
+        for j in param2:
+            my_dict = dict()
+            my_dict[model_hparams_type[0]] = i
+            my_dict[model_hparams_type[1]] = j
+            model_hparams_values.append(my_dict)
+    print('Hyperparameter Options:')
+    for item in model_hparams_values:
+        print(item)
+    
+    vad_dat = []
+    vad_mean = []
+    for param in model_hparams_values:
+        train_results, val_results, hparams = run_hparams(model, param)
+        vad_dat.append(val_results)
+
+    print('\nMean Validation Error')
+    for i,param in enumerate(model_hparams_values):
+        print(vad_dat[i])
+        mean = sum(vad_dat[i].values())/len(vad_dat[i])
+        print(param, mean)
+        vad_mean.append(mean)
+    
+    ind_best = np.argmin(vad_mean)
+    print('\nBest Hyperparams for ', model)
+    print(model_hparams_values[ind_best])
+    # train_results, val_results, hparams = run_method(model)
+    # print(f'train accuracy on each dataset: {train_results}'
+    #       f'\nval accuracy on each dataset: {val_results}'
+    #       f'\nhparams: {hparams}')
+    # report_result()
