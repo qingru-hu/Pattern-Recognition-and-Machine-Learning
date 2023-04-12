@@ -96,19 +96,47 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
-\section*{2.1}
+  I used the \texttt{sklearn.mixture.GaussianMixture} model to fit the data.
+  This model uses EM algorithm to estimate the distribution. 
+  The code for this problem is in \texttt{problem2.py}.
+  The diagram for the prediction error with respect to iteration times $t$ 
+  and total number of samples $N$ are shown in Fig.1 and Fig.2.
 
-\section*{2.2}
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=10cm]{iterate_t.png}
+    \caption{The prediction error with respect to $t$}
+  \end{figure}
 
-\section*{2.3}
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=10cm]{iterate_n.png}
+    \caption{The prediction error with respect to $N$}
+  \end{figure}
 
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+  The code fo this problem is in \texttt{problem3.py}.
 \section*{3.1}
+I used the \texttt{sklearn.cluster.KMeans} model to do the clustering on training data points. 
+The diagram of Je with respect to number of clusters is shown in Fig.3. 
+The elbow point is around 15.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=10cm]{Je.png}
+  \caption{Je with respect to number of clusters}
+\end{figure}
 
 \section*{3.2}
+The learned means of each cluster are stored in `kmeans' directory. They look like ten hand-written numbers.
+I used 20 clusters in the prediction and the prediction accuracy on MNIST test dataset of \texttt{KMeans} is about 60\%.
 
+\section*{3.3}
+I used \texttt{sklearn.mixture.GaussianMixture} to use EM on MNIST. 
+The learned means of each cluster are stored in `em' directory. 
+I used 20 components in the prediction and the prediction accuracy on MNIST test dataset of \texttt{KMeans} is 
+a little higher than 60\%.
 \end{homeworkProblem}
 
 % \newpage

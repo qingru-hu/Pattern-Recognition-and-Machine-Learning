@@ -1,16 +1,19 @@
 # Fdb version 3
-["xdvipdfmx"] 1681225832 "hw7.xdv" "hw7.pdf" "hw7" 1681225833
-  "hw7.xdv" 1681225832 3192 9d2cd9a2e7f59d5f8042cfbe3d109620 "xelatex"
+["xdvipdfmx"] 1681305327 "hw7.xdv" "hw7.pdf" "hw7" 1681305328
+  "hw7.xdv" 1681305327 16296 9e0be76e07977e52bce583ff4d674e9f "xelatex"
   (generated)
   "hw7.pdf"
-["xelatex"] 1681225832 "d:/github/Pattern-Recognition-and-Machine-Learning/hw7/code/report/hw7.tex" "hw7.xdv" "hw7" 1681225833
+["xelatex"] 1681305327 "d:/github/Pattern-Recognition-and-Machine-Learning/hw7/code/report/hw7.tex" "hw7.xdv" "hw7" 1681305328
+  "Je.png" 1681304994 22352 753c1400ca2cb05928fb126d239282d2 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1667557178 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1667556211 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1667552699 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1667552699 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1667552699 916 f87d7c45f9c908e672703b83b72241a3 ""
+  "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1667552699 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1667552699 928 2dc8d444221b7a635bb58038579b861a ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1667552699 908 2921f8a10601f252058503cc6570e581 ""
+  "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1667552699 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1667552699 940 228d6584342e91276bf566bcf9716b83 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1667554797 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1667554797 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -59,9 +62,11 @@
   "c:/texlive/2022/texmf-var/web2c/xetex/xelatex.fmt" 1667566889 5575393 bc29f7eb9d1e7cbdd17d35ad5a86afc6 ""
   "c:/texlive/2022/texmf.cnf" 1667566789 713 e69b156964470283e0530f5060668171 ""
   "cluster.jpg" 1681225384 115567 10dccf21c4b1547255913f7cedf7f15a ""
-  "d:/github/Pattern-Recognition-and-Machine-Learning/hw7/code/report/hw7.tex" 1681225831 4124 06db9d0ba95209650e7b4fb2f539d155 ""
-  "hw7.aux" 1681225832 114 6e1e809bbf8828c6eb46a14c07135d2a "xelatex"
-  "hw7.tex" 1681225831 4124 06db9d0ba95209650e7b4fb2f539d155 ""
+  "d:/github/Pattern-Recognition-and-Machine-Learning/hw7/code/report/hw7.tex" 1681305326 5662 503fdc129e2fde2e3afd55eee3ce3207 ""
+  "hw7.aux" 1681305327 540 83253bed9424f9985f47b20792c2ca50 "xelatex"
+  "hw7.tex" 1681305326 5662 503fdc129e2fde2e3afd55eee3ce3207 ""
+  "iterate_n.png" 1681302492 64863 afbc23d792b9e8eba9103f93a19643fc ""
+  "iterate_t.png" 1681301949 52634 65619862c2633ba8bcd3d175f5ea6047 ""
   (generated)
   "hw7.aux"
   "hw7.log"

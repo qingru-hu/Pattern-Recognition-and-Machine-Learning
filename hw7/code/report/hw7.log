@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.4)  11 APR 2023 23:10
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.4)  12 APR 2023 21:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -240,18 +240,24 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 File: cluster.jpg Graphic file (type bmp)
 <cluster.jpg>
- 
+File: iterate_t.png Graphic file (type bmp)
+<iterate_t.png>
+File: iterate_n.png Graphic file (type bmp)
+<iterate_n.png>
+File: Je.png Graphic file (type bmp)
+<Je.png>
+ [1
+
+] [2] 
 AED: lastpage setting LastPage
-[1
-
-] [2] (./hw7.aux) ) 
+[3] (./hw7.aux) ) 
 Here is how much of TeX's memory you used:
- 3505 strings out of 475644
- 54887 string characters out of 5799831
- 385706 words of memory out of 5000000
- 24741 multiletter control sequences out of 15000+600000
- 474281 words of font info for 55 fonts, out of 8000000 for 9000
+ 3545 strings out of 475644
+ 55434 string characters out of 5799831
+ 388706 words of memory out of 5000000
+ 24773 multiletter control sequences out of 15000+600000
+ 475988 words of font info for 64 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 55i,11n,62p,287b,283s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,11n,62p,287b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on hw7.xdv (2 pages, 3192 bytes).
+Output written on hw7.xdv (3 pages, 16296 bytes).
