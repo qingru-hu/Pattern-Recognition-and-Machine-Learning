@@ -1,0 +1,152 @@
+% Modified based on Xiaoming Sun's template
+\documentclass{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{enumitem}
+\usepackage{array} 
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{fontspec}
+\setmonofont{Consolas}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  language = python, numbers=left, 
+         numberstyle=\tiny,keywordstyle=\color{blue!70},
+         commentstyle=\color{red!50!green!50!blue!50},frame=shadowbox,
+         rulesepcolor=\color{red!20!green!20!blue!20},basicstyle=\ttfamily
+}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\Class}{Pattern Recognition and Machine Learning}
+
+% Homework Specific Information. Change it to your own
+\newcommand{\Title}{Homework 2}
+
+% In case you need to adjust margins:
+\topmargin=-0.45in      %
+\evensidemargin=0in     %
+\oddsidemargin=0in      %
+\textwidth=6.5in        %
+\textheight=9.0in       %
+\headsep=0.25in         %
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\chead{\Title}  %
+\rhead{\firstxmark}                                                     %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}}                          %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+\newcommand{\enterProblemHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak%
+                                    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}%
+\newcommand{\exitProblemHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak%
+                                   \nobreak\extramarks{#1}{}\nobreak}%
+
+\newcommand{\homeworkProblemName}{}%
+\newcounter{homeworkProblemCounter}%
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]%
+  {\stepcounter{homeworkProblemCounter}%
+   \renewcommand{\homeworkProblemName}{#1}%
+   \section*{\homeworkProblemName}%
+   \enterProblemHeader{\homeworkProblemName}}%
+  {\exitProblemHeader{\homeworkProblemName}}%
+
+\newcommand{\homeworkSectionName}{}%
+\newlength{\homeworkSectionLabelLength}{}%
+\newenvironment{homeworkSection}[1]%
+  {% We put this space here to make sure we're not connected to the above.
+
+   \renewcommand{\homeworkSectionName}{#1}%
+   \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}%
+   \addtolength{\homeworkSectionLabelLength}{0.25in}%
+   \changetext{}{-\homeworkSectionLabelLength}{}{}{}%
+   \subsection*{\homeworkSectionName}%
+   \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}}%
+  {\enterProblemHeader{\homeworkProblemName}%
+
+   % We put the blank space above in order to make sure this margin
+   % change doesn't happen too soon.
+   \changetext{}{+\homeworkSectionLabelLength}{}{}{}}%
+
+\newcommand{\Answer}{\ \\\textbf{Answer:} }
+\newcommand{\Acknowledgement}[1]{\ \\{\bf Acknowledgement:} #1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make title
+\title{\textmd{\bf \Class: \Title}}
+  \date{\textbf{\today}}
+\author{\textbf{Qingru Hu \quad 2020012996}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{spacing}{1.1}
+\maketitle \thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin edit from here
+
+\begin{homeworkProblem}
+The computing graph of the loss is as below.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=14cm]{graph.jpg}
+\end{figure}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  For the 2th layer:
+\begin{align*}
+  \frac{\partial J}{\partial y} &= -(z_2 - y)\\
+  \frac{\partial J}{\partial z_2} &= z_2 - y\\
+  \frac{\partial J}{\partial a_2} &= \frac{\partial z_2}{\partial a_2} \frac{\partial J}{\partial z_2} = W_2 \frac{\partial J}{\partial z_2}\\
+  \frac{\partial J}{\partial W_2} &= \frac{\partial z_2}{\partial W_2} \frac{\partial J}{\partial z_2} = a_2 \frac{\partial J}{\partial z_2}\\
+  \frac{\partial J}{\partial b_2} &= \frac{\partial z_2}{\partial b_2} \frac{\partial J}{\partial z_2} = \frac{\partial J}{\partial z_2}
+\end{align*}
+
+For the 1th layer:
+\begin{align*}
+  \frac{\partial J}{\partial z_1} &= \frac{\partial a_2}{\partial z_1} \frac{\partial J}{\partial a_2} = g'(z_1) \frac{\partial J}{\partial a_2} = H(z_1) \frac{\partial J}{\partial a_2}\\
+  \frac{\partial J}{\partial a_1} &= \frac{\partial z_1}{\partial a_1} \frac{\partial J}{\partial z_1} = W_1 \frac{\partial J}{\partial z_1}\\
+  \frac{\partial J}{\partial W_1} &= \frac{\partial z_1}{\partial W_1} \frac{\partial J}{\partial z_1} = a_1 \frac{\partial J}{\partial z_1}\\
+  \frac{\partial J}{\partial b_1} &= \frac{\partial z_1}{\partial b_1} \frac{\partial J}{\partial z_1} = \frac{\partial J}{\partial z_1}
+\end{align*}
+
+For the 0th layer:
+\begin{align*}
+  \frac{\partial J}{\partial z_0} &= \frac{\partial a_1}{\partial z_0} \frac{\partial J}{\partial a_1} = g'(z_0) \frac{\partial J}{\partial a_1} = H(z_0) \frac{\partial J}{\partial a_1}\\
+  \frac{\partial J}{\partial a_0} &= \frac{\partial z_0}{\partial a_0} \frac{\partial J}{\partial z_0} = W_0 \frac{\partial J}{\partial z_0} \\
+  \frac{\partial J}{\partial W_0} &= \frac{\partial z_0}{\partial W_0} \frac{\partial J}{\partial z_0} = a_0 \frac{\partial J}{\partial z_0}\\
+  \frac{\partial J}{\partial b_0} &= \frac{\partial z_0}{\partial b_0} \frac{\partial J}{\partial z_0} = \frac{\partial J}{\partial z_0} \\
+  \frac{\partial J}{\partial x} &= \frac{\partial a_0}{\partial x} \frac{\partial J}{\partial a_0} = g'(x) \frac{\partial J}{\partial a_0} = H(x) \frac{\partial J}{\partial a_0} \\
+\end{align*}
+  
+\end{homeworkProblem}
+
+
+% \newpage
+% \Acknowledgement{Thank Siying Yang 2020012981 for
+% the discussion about Problem 2.3 and Problem 3.}
+
+% End edit to here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{spacing}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
