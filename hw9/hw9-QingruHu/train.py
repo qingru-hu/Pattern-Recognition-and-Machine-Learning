@@ -43,53 +43,50 @@ def compute_gradient_definition(x, y, W0, W1, W2, b0, b1, b2, delta=1e-5):
             param_grad[idx] = (loss_plus_delta - loss_minus_delta) / (2 * delta)
 
             param[idx] = original_val
-        print(param_grad.shape)
+        # print(param_grad.shape)
         grads.append(param_grad)
 
     return grads
 
 # Define the function for students to implement back-propagation
 def compute_gradient(x, y, W0, W1, W2, b0, b1, b2, a1, a2):
-    print('x', x.shape)
-    print('y', y.shape)
-    print('w2', W2.shape)
-    print('b2', b2.shape)
-    print('a2', a2.shape)
-    print('w1', W1.shape)
-    print('b1', b1.shape)
-    print('a1', a1.shape)
-    print('w0', W0.shape)
-    print('b0', b0.shape)
+    # print('x', x.shape)
+    # print('y', y.shape)
+    # print('w2', W2.shape)
+    # print('b2', b2.shape)
+    # print('a2', a2.shape)
+    # print('w1', W1.shape)
+    # print('b1', b1.shape)
+    # print('a1', a1.shape)
+    # print('w0', W0.shape)
+    # print('b0', b0.shape)
     
     a0 = relu(x)
-    pz2 = a2.dot(W2)+b2 - y
-    print('pz2', pz2.shape)
+    pz2 = -(a2.dot(W2)+b2 - y)
     pa2 = pz2.dot(W2.T)
-    print('pa2', pa2.shape)
     pW2 = a2.T.dot(pz2)
-    print('pW2', pW2.shape)
-    pb2 = pz2
-    
+    pb2 = np.sum(pz2, axis=0)
+
     pz1 = relu_derivative(a1.dot(W1)+b1)*(pa2)
-    print('pz1', pz1.shape)
     pa1 = pz1.dot(W1.T)
-    print('pa1', pa1.shape)
     pW1 = a1.T.dot(pz1)
-    print('pW1', pW1.shape)
-    pb1 = pz1
+    pb1 = np.sum(pz1, axis=0)
     
     pz0 = relu_derivative(a0.dot(W0)+b0)*(pa1)
-    print('pz0', pz0.shape)
-    # pa0 = W0*pz0
     pW0 = a0.T.dot(pz0)
+    pb0 = np.sum(pz0, axis=0)
+    
+    print('pz2', pz2.shape)
+    print('pb2', pb2.shape)
+    print('pW2', pW2.shape)
+    print('pz1', pz1.shape)
+    print('pb1', pb1.shape)
+    print('pW1', pW1.shape)
+    print('pz0', pz0.shape)
+    print('pb0', pb0.shape)
     print('pW0', pW0.shape)
-    pb0 = pz0
     
-    
-    return [pW2,pW1,pW2,pb2,pb1,pb0]
-############################################################
-#           TODO: fill in the function here                #
-############################################################
+    return [pW0,pW1,pW2,pb0,pb1,pb2]
 
 
 # Dataset generation function
@@ -116,30 +113,30 @@ def gradient_descent(x, y, learning_rate, epochs):
     grads_def = compute_gradient_definition(x, y, W0, W1, W2, b0, b1, b2)
 
     # Print gradients
+    parms = ['W0', 'W1', 'W2', 'b0', 'b1', 'b2']
     for _ in range(len(grads_def)):
-        # print("Gradients computed using back-propagation: ", len(grads_bp[_]))
-        # print("Gradients computed using definition: ", grads_def[_])
-        # print("Gradients computed using definition: ", len(grads_def))
+        print("%s Gradients computed using back-propagation: "%parms[_], grads_bp[_])
+        print("%s Gradients computed using definition: "%parms[_], grads_def[_])
         print(f"diff {np.abs(grads_def[_] - grads_bp[_]).max()}")
 
     print("Please make sure all the difference are sufficiently small to go on")
 
-    for epoch in range(epochs):
-        # Forward pass
-        y_hat, a1, a2 = forward(x, W0, W1, W2, b0, b1, b2)
+    # for epoch in range(epochs):
+    #     # Forward pass
+    #     y_hat, a1, a2 = forward(x, W0, W1, W2, b0, b1, b2)
 
-        # Compute gradients using back-propagation
-        grads_bp = compute_gradient(x, y, W0, W1, W2, b0, b1, b2, a1, a2)
+    #     # Compute gradients using back-propagation
+    #     grads_bp = compute_gradient(x, y, W0, W1, W2, b0, b1, b2, a1, a2)
 
-        print(f"{epoch}: loss is {compute_loss(x, y, W0, W1, W2, b0, b1, b2)}")
+    #     print(f"{epoch}: loss is {compute_loss(x, y, W0, W1, W2, b0, b1, b2)}")
 
-        # Update parameters using gradients from back-propagation
-        W0 -= learning_rate * grads_bp[0]
-        W1 -= learning_rate * grads_bp[1]
-        W2 -= learning_rate * grads_bp[2]
-        b0 -= learning_rate * grads_bp[3]
-        b1 -= learning_rate * grads_bp[4]
-        b2 -= learning_rate * grads_bp[5]
+    #     # Update parameters using gradients from back-propagation
+    #     W0 -= learning_rate * grads_bp[0]
+    #     W1 -= learning_rate * grads_bp[1]
+    #     W2 -= learning_rate * grads_bp[2]
+    #     b0 -= learning_rate * grads_bp[3]
+    #     b1 -= learning_rate * grads_bp[4]
+    #     b2 -= learning_rate * grads_bp[5]
 
     return W0, W1, W2, b0, b1, b2
 
@@ -154,6 +151,6 @@ epochs = 100
 # Train the network using gradient descent
 W0, W1, W2, b0, b1, b2 = gradient_descent(X_train, y_train, learning_rate, epochs)
 
-X_test, y_test = generate_dataset(100, 10)
-test_loss = compute_loss(X_test, y_test, W0, W1, W2, b0, b1, b2)
-print(f"Test loss is {test_loss}")
+# X_test, y_test = generate_dataset(100, 10)
+# test_loss = compute_loss(X_test, y_test, W0, W1, W2, b0, b1, b2)
+# print(f"Test loss is {test_loss}")
