@@ -130,11 +130,54 @@ Take the derivative of $f_3$:
 
 \subsubsection*{2.}
 \begin{lstlisting}
+  # define Y
+  l = len(X_l)
+  u = len(X_u)
+  X = np.concatenate([X_l, X_u])
+  self.X = X
+  Y_u = np.zeros([u, Y_l.shape[1]])
+  Y = np.concatenate([Y_l, Y_u])
+
   self.W = np.linalg.inv(J.dot(K) + self.gamma_A*l*np.identity(l+u) 
-           + (self.gamma_I*l)/(u+l)**2*L.dot(K)).dot(Y)
+            + (self.gamma_I*l)/(u+l)**2*L.dot(K)).dot(Y)
 \end{lstlisting}
 
 \subsection*{Task2}
+
+\subsection*{Task3}
+\subsubsection*{1.}
+\begin{lstlisting}
+from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+from sklearn.manifold import MDS
+from sklearn.manifold import Isomap
+from sklearn.manifold import LocallyLinearEmbedding as LLE
+from sklearn.manifold import TSNE
+
+methods = {
+  'PCA': PCA(n_components=2),
+  'LDA':LDA(),
+  'MDS':MDS(n_components=2),
+  'Isomap':Isomap(n_components=2),
+  'LLE':LLE(n_components=2),
+  't-SNE':TSNE(n_components=2)
+}
+\end{lstlisting}
+
+\subsubsection*{2.}
+Use the digits dataset for visualization. Visualization results are shown in Fig.1 and Fig.2.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm]{rls.pdf}
+  \caption{The visualization for RLS}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm]{laprls.pdf}
+  \caption{The visualization for LapRLS}
+\end{figure}
 
 \end{homeworkProblem}
 
