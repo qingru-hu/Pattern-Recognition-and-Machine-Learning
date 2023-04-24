@@ -202,7 +202,7 @@ def main(dataset_name):
         't-SNE':TSNE(n_components=2)
     }
 
-    # 绘制降维后的可视化图
+    ## 绘制降维后的可视化图
     for model in ["laprls", "rls"]:
         fig, axs = plt.subplots(2, 3, figsize=(15, 10))
         axs = axs.ravel()
@@ -249,6 +249,7 @@ def cal_accuracy(dataset_name):
     # 预测
     y_pred_rls = rls.predict(X_test)
     y_pred_rls = np.argmax(y_pred_rls, axis=1).squeeze()
+    # fix the squeeze bug
     if len(y_pred_rls.shape)>1:
         y = []
         for i in y_pred_rls:
@@ -261,36 +262,40 @@ def cal_accuracy(dataset_name):
 
     ## LapRLS
     # 使用验证集选择最佳的gamma_I
-    # best_gamma_I = 0
-    # best_accuracy = 0
-    # for gamma_I in np.logspace(1, 5, 5):
-    #     print(gamma_I)
-    #     laprls = LapRLS(gamma_I=gamma_I)
-    #     laprls.fit(X_train[mask], X_train[~mask], y_train_one_hot)
+    best_gamma_I = 0
+    best_accuracy = 0
+    for gamma_I in np.logspace(1, 6, 6):
+        print(gamma_I)
+        laprls = LapRLS(gamma_I=gamma_I)
+        laprls.fit(X_train[mask], X_train[~mask], y_train_one_hot)
 
-    #     y_pred_val = laprls.predict(X_val)
-    #     y_pred_val = np.argmax(y_pred_val, axis=1).squeeze()
-    #     if len(y_pred_val.shape)>1:
-    #         # fix the bug
-    #         y = []
-    #         for i in y_pred_val:
-    #             y.append(i.item())
-    #         y_pred_val = np.array(y)
-    #     accuracy = np.mean(y_pred_val == y_val)
-    #     # print(gamma_I, accuracy)
-    #     if accuracy > best_accuracy:
-    #         best_accuracy = accuracy
-    #         best_gamma_I = gamma_I
+        y_pred_val = laprls.predict(X_val)
+        y_pred_val = np.argmax(y_pred_val, axis=1).squeeze()
+        # fix the squeeze bug
+        if len(y_pred_val.shape)>1:
+            y_pred_val = laprls.predict(X_val)
+            y_pred_val = np.argmax(y_pred_val, axis=1)
+            y = []
+            for i in y_pred_val:
+                y.append(i.item())
+            y_pred_val = np.array(y)
+        accuracy = np.mean(y_pred_val == y_val)
+        # print(gamma_I, accuracy)
+        if accuracy > best_accuracy:
+            best_accuracy = accuracy
+            best_gamma_I = gamma_I
 
     # 使用最佳的gamma_I重新训练模型
-    # laprls = LapRLS(gamma_I=best_gamma_I)
-    laprls = LapRLS(gamma_I=1e3)
+    laprls = LapRLS(gamma_I=best_gamma_I)
     laprls.fit(X_train[mask], X_train[~mask], y_train_one_hot)
 
     # 预测
     y_pred_laprls = laprls.predict(X_test)
     y_pred_laprls = np.argmax(y_pred_laprls, axis=1).squeeze()
+    # fix the squeeze bug
     if len(y_pred_laprls.shape)>1:
+        y_pred_laprls = laprls.predict(X_test)
+        y_pred_laprls = np.argmax(y_pred_laprls, axis=1)
         y = []
         for i in y_pred_laprls:
             y.append(i.item())
@@ -303,19 +308,19 @@ def cal_accuracy(dataset_name):
 
 
 if __name__ == '__main__':
-    main('digits')  # 更改数据集名称以尝试不同的数据集
+    # main('digits')  # 更改数据集名称以尝试不同的数据集
     # datasets = ['digits', 'usps']
-    # datasets = ['usps']
-    # accuracy_RLS_all = []
-    # accuracy_manifold_all = []
-    # for dataset in datasets:
-    #     print('#'*10, dataset, '#'*10)
-    #     for i in range(5):
-    #         accuracy_RLS, accuracy_manifold = cal_accuracy(dataset)
-    #         accuracy_RLS_all.append(accuracy_RLS)
-    #         accuracy_manifold_all.append(accuracy_manifold)
-    #     print('#'*20)
-    #     print('RLS: Mean Std')
-    #     print(np.mean(accuracy_RLS_all), np.std(accuracy_RLS_all))
-    #     print('LapRLS: Mean Std')
-    #     print(np.mean(accuracy_manifold_all), np.std(accuracy_manifold_all))
+    datasets = ['usps']
+    accuracy_RLS_all = []
+    accuracy_manifold_all = []
+    for dataset in datasets:
+        print('#'*10, dataset, '#'*10)
+        for i in range(5):
+            accuracy_RLS, accuracy_manifold = cal_accuracy(dataset)
+            accuracy_RLS_all.append(accuracy_RLS)
+            accuracy_manifold_all.append(accuracy_manifold)
+        print('#'*20)
+        print('RLS: Mean Std')
+        print(np.mean(accuracy_RLS_all), np.std(accuracy_RLS_all))
+        print('LapRLS: Mean Std')
+        print(np.mean(accuracy_manifold_all), np.std(accuracy_manifold_all))

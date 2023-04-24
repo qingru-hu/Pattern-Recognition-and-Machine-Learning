@@ -128,6 +128,17 @@ Take the derivative of $f_3$:
   \frac{\d f_3}{\d W} &= \frac{2\gamma_I}{(u+l)^2} KLK W
 \end{align*}
 
+The solution for the optimization should satisfy:
+\begin{align*}
+  \frac{\d f_1}{\d W} + \frac{\d f_2}{\d W} + \frac{\d f_3}{\d W} &= 0 \\
+  -\frac{2}{l} (JK)^{T} (Y-JKW) + 2 \gamma_A K W + \frac{2\gamma_I}{(u+l)^2} KLK W &= 0 \\
+  ((JK)^{T}JK + \gamma_A l K + \frac{\gamma_I l}{(u+l)^2} KLK)W &= (JK)^{T} Y \\
+  \because K^T = K, J^T = J, \text{multiply $K^{-1}$ on both sides to the right} \\
+  (JJK + \gamma_A l I + \frac{\gamma_I l}{(u+l)^2} LK)W &= JY \\
+  \because JY = Y \\
+  W^* = (JJK + \gamma_A l I + \frac{\gamma_I l}{(u+l)^2} LK)^{-1}Y
+\end{align*}
+
 \subsubsection*{2.}
 \begin{lstlisting}
   # define Y
@@ -143,6 +154,17 @@ Take the derivative of $f_3$:
 \end{lstlisting}
 
 \subsection*{Task2}
+The mean of the accuracy of LapRLS is better than that of RLS in two datasets. The std of the two methods are almost the same.
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|c|cc|cc|}
+  \hline
+         & \multicolumn{2}{c|}{digits}         & \multicolumn{2}{c|}{usps}           \\ \hline
+         & \multicolumn{1}{c|}{mean}  & std    & \multicolumn{1}{c|}{mean}  & std    \\ \hline
+  RLS    & \multicolumn{1}{c|}{0.826} & 0.0378 & \multicolumn{1}{c|}{0.748} & 0.0089 \\ \hline
+  LapRLS & \multicolumn{1}{c|}{0.861} & 0.0230 & \multicolumn{1}{c|}{0.893} & 0.0096 \\ \hline
+  \end{tabular}
+  \end{table}
 
 \subsection*{Task3}
 \subsubsection*{1.}
@@ -167,15 +189,15 @@ methods = {
 \subsubsection*{2.}
 Use the digits dataset for visualization. Visualization results are shown in Fig.1 and Fig.2.
 
-\begin{figure}
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=14cm]{rls.pdf}
+  \includegraphics[width=16cm]{rls.pdf}
   \caption{The visualization for RLS}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=14cm]{laprls.pdf}
+  \includegraphics[width=16cm]{laprls.pdf}
   \caption{The visualization for LapRLS}
 \end{figure}
 
