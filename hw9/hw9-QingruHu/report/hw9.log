@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.4)  22 APR 2023 17:33
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.4)  30 APR 2023 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -524,19 +524,22 @@ File: graph.jpg Graphic file (type bmp)
 <graph.jpg>
  [1
 
-] 
+] [2]
+File: diff.png Graphic file (type bmp)
+<diff.png>
+ 
 AED: lastpage setting LastPage
-[2] (./hw9.aux)
+[3] (./hw9.aux)
 Package rerunfilecheck Info: File `hw9.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14514 strings out of 475644
- 275445 string characters out of 5799831
- 866877 words of memory out of 5000000
- 35567 multiletter control sequences out of 15000+600000
- 476460 words of font info for 79 fonts, out of 8000000 for 9000
+ 14703 strings out of 475644
+ 277330 string characters out of 5799831
+ 907877 words of memory out of 5000000
+ 35753 multiletter control sequences out of 15000+600000
+ 476468 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 72i,11n,77p,322b,418s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,77p,322b,1908s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on hw9.xdv (2 pages, 8784 bytes).
+Output written on hw9.xdv (3 pages, 50708 bytes).

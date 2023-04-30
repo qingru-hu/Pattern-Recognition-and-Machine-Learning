@@ -791,6 +791,9 @@ INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 OUTPUT hw9.xdv
+INPUT ./diff.png
+INPUT ./diff.png
+INPUT diff.png
 INPUT hw9.aux
 INPUT ./hw9.out
 INPUT ./hw9.out

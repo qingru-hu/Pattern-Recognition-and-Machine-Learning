@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1682156020 "hw9.xdv" "hw9.pdf" "hw9" 1682156021
-  "hw9.xdv" 1682156020 8784 7e923c09c3acbaecac07988baaeba6b9 "xelatex"
+["xdvipdfmx"] 1682824784 "hw9.xdv" "hw9.pdf" "hw9" 1682824785
+  "hw9.xdv" 1682824784 50708 3c742cfe5be248db4122cf8556641f75 "xelatex"
   (generated)
   "hw9.pdf"
-["xelatex"] 1682156019 "d:/github/Pattern-Recognition-and-Machine-Learning/hw9/hw9-QingruHu/report/hw9.tex" "hw9.xdv" "hw9" 1682156021
+["xelatex"] 1682824783 "d:/github/Pattern-Recognition-and-Machine-Learning/hw9/hw9-QingruHu/report/hw9.tex" "hw9.xdv" "hw9" 1682824785
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1667557178 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1667566728 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1667556211 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -103,11 +103,12 @@
   "c:/texlive/2022/texmf-dist/web2c/texmf.cnf" 1667552418 40171 cdab547de63d26590bebb3baff566530 ""
   "c:/texlive/2022/texmf-var/web2c/xetex/xelatex.fmt" 1667566889 5575393 bc29f7eb9d1e7cbdd17d35ad5a86afc6 ""
   "c:/texlive/2022/texmf.cnf" 1667566789 713 e69b156964470283e0530f5060668171 ""
-  "d:/github/Pattern-Recognition-and-Machine-Learning/hw9/hw9-QingruHu/report/hw9.tex" 1682156018 6551 f5af8d788e8993063a3fa2bcd76827b0 ""
+  "d:/github/Pattern-Recognition-and-Machine-Learning/hw9/hw9-QingruHu/report/hw9.tex" 1682824781 8185 47f2b793a9d21285491d669867afb9fa ""
+  "diff.png" 1682824541 240176 cb9e4b14cf4aabfccf9544844f83410d ""
   "graph.jpg" 1682154982 66107 59b00d3d4c569d66bffd85a6e325722b ""
-  "hw9.aux" 1682156020 615 82c60dcef0936aefc8474bd0f595dca4 "xelatex"
+  "hw9.aux" 1682824784 615 a2ec031ea414ed0091f163d3839c2020 "xelatex"
   "hw9.out" 0 -1 0 "xelatex"
-  "hw9.tex" 1682156018 6551 f5af8d788e8993063a3fa2bcd76827b0 ""
+  "hw9.tex" 1682824781 8185 47f2b793a9d21285491d669867afb9fa ""
   (generated)
   "hw9.aux"
   "hw9.log"
