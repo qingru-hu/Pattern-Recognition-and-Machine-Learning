@@ -1,4 +1,5 @@
-﻿name,jupyter端口,登录指令
+﻿胡清茹,8784,ssh -L 8784:localhost:8784 prml1@166.111.73.70 -p 10095
+name,jupyter端口,登录指令
 李施璇,8767,ssh -L 8767:localhost:8767 prml1@166.111.73.119 -p 10080
 朱文博,8784,ssh -L 8784:localhost:8784 prml1@166.111.73.119 -p 10081
 王启帆,8767,ssh -L 8767:localhost:8767 prml1@166.111.73.119 -p 10082
@@ -14,7 +15,7 @@
 周亦涵,8767,ssh -L 8767:localhost:8767 prml1@166.111.73.119 -p 10092
 宋东芪,8784,ssh -L 8784:localhost:8784 prml1@166.111.73.119 -p 10093
 杨思颖,8767,ssh -L 8767:localhost:8767 prml1@166.111.73.119 -p 10094
-胡清茹,8784,ssh -L 8784:localhost:8784 prml1@166.111.73.119 -p 10095
+
 杨骏,8767,ssh -L 8767:localhost:8767 prml1@166.111.73.119 -p 10096
 杜雨萱,8784,ssh -L 8784:localhost:8784 prml1@166.111.73.119 -p 10097
 张雨溪,8767,ssh -L 8767:localhost:8767 prml1@166.111.73.119 -p 10098
