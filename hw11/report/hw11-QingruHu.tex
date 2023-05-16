@@ -1,0 +1,122 @@
+% Modified based on Xiaoming Sun's template
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{enumitem}
+\usepackage{array} 
+\usepackage{geometry}
+\geometry{a4paper,left=1cm,right=1cm,top=2cm,bottom=2cm}
+\newcommand{\Class}{Pattern Recognition and Machine Learning}
+
+% Homework Specific Information. Change it to your own
+\newcommand{\Title}{Homework 11}
+
+% In case you need to adjust margins:
+% \topmargin=-0.45in      %
+% \evensidemargin=0in     %
+% \oddsidemargin=0in      %
+% \textwidth=8in        %
+% \textheight=6in       %
+% \headsep=0.25in         %
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\chead{\Title}  %
+\rhead{\firstxmark}                                                     %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}}                          %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+\newcommand{\enterProblemHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak%
+                                    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}%
+\newcommand{\exitProblemHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak%
+                                   \nobreak\extramarks{#1}{}\nobreak}%
+
+\newcommand{\homeworkProblemName}{}%
+\newcounter{homeworkProblemCounter}%
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]%
+  {\stepcounter{homeworkProblemCounter}%
+   \renewcommand{\homeworkProblemName}{#1}%
+   \section*{\homeworkProblemName}%
+   \enterProblemHeader{\homeworkProblemName}}%
+  {\exitProblemHeader{\homeworkProblemName}}%
+
+\newcommand{\homeworkSectionName}{}%
+\newlength{\homeworkSectionLabelLength}{}%
+\newenvironment{homeworkSection}[1]%
+  {% We put this space here to make sure we're not connected to the above.
+
+   \renewcommand{\homeworkSectionName}{#1}%
+   \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}%
+   \addtolength{\homeworkSectionLabelLength}{0.25in}%
+   \changetext{}{-\homeworkSectionLabelLength}{}{}{}%
+   \subsection*{\homeworkSectionName}%
+   \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}}%
+  {\enterProblemHeader{\homeworkProblemName}%
+
+   % We put the blank space above in order to make sure this margin
+   % change doesn't happen too soon.
+   \changetext{}{+\homeworkSectionLabelLength}{}{}{}}%
+
+\newcommand{\Answer}{\ \\\textbf{Answer:} }
+\newcommand{\Acknowledgement}[1]{\ \\{\bf Acknowledgement:} #1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make title
+\title{\textmd{\bf \Class: \Title}}
+  \date{\textbf{\today}}
+\author{\textbf{Qingru Hu \quad 2020012996}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{spacing}{1.1}
+\maketitle \thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin edit from here
+\section{Screenshots of each part of the code that you have finished}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=10cm]{s1.png}
+  \includegraphics*[width=10cm]{s2.png}
+  \includegraphics*[width=10cm]{s3.png}
+  \includegraphics*[width=10cm]{s4.png}
+  \includegraphics*[width=10cm]{s5.png}
+\end{figure}
+
+\section{The training loss and the test accuracy}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=10cm]{loss.png}
+\end{figure}
+
+% \section{The accuracy of the network on the 10000 test images}
+
+\section{The complete code of \texttt{main.py}}
+The complete code is in \texttt{main.py} under the same fold of the report.
+% \newpage
+\\
+\Acknowledgement{Thank Yihan Zhou (周亦涵) for
+the discussion about this homework.}
+
+% End edit to here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{spacing}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
